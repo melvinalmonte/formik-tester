@@ -1,23 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { FormikTester } from "./components/forms";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
 function App() {
+  const [formikPayload, setFormikPayload] = React.useState({});
+
+  const formConfig = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+      customRadio: "",
+      customCheckbox: [],
+    },
+    validationSchema: Yup.object({
+      username: Yup.string().required("Username field is empty"),
+      password: Yup.string().required("Password field is empty"),
+      customRadio: Yup.string().required("Radio field is empty"),
+      customCheckbox: Yup.array().required("Make at least one selection"),
+    }),
+    onSubmit: (values) => setFormikPayload(values),
+  });
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Formik Tester: </h1>
+        <FormikTester
+          handleSubmit={formConfig.handleSubmit}
+          handleChange={formConfig.handleChange}
+          value={formConfig.values}
+          errors={formConfig.errors}
+          payload={formikPayload}
+        />
+        <code>
+          Source code:{" "}
+          <a href="https://github.com/melvinalmonte/formik-tester">Here</a>
+        </code>
       </header>
     </div>
   );
