@@ -2,7 +2,7 @@ import React from "react";
 import { useField } from "formik";
 
 const Radio = ({ label, ...props }) => {
-  const [field, meta] = useField(props);
+  const [field] = useField(props);
 
   return (
     <>

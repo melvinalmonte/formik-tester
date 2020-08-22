@@ -2,7 +2,7 @@ import React from "react";
 import { useField } from "formik";
 
 const CheckBox = ({ children, ...props }) => {
-  const [field, meta] = useField({ ...props, type: "checkbox" });
+  const [field] = useField({ ...props, type: "checkbox" });
 
   return (
     <>
