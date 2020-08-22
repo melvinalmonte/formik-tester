@@ -8,11 +8,8 @@ const Radio = ({ label, ...props }) => {
     <>
       <label className="radio">
         <input type="radio" {...field} {...props} />
-        <span className="radio-label">{label}</span>
+        <span className="radio-value">{label}</span>
       </label>
-      {meta.touched && meta.error ? (
-        <p className="help is-danger">{meta.error}</p>
-      ) : null}
     </>
   );
 };

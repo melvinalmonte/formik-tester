@@ -3,6 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Input from "./components/form/Input";
 import Radio from "./components/form/Radio";
+import CheckBox from "./components/form/CheckBox";
 
 export const App = () => {
   const [formPayload, setFormPayload] = React.useState({});
@@ -18,6 +19,7 @@ export const App = () => {
               password: "",
               passwordConfirm: "",
               radioValue: "",
+              checkboxValues: [],
             }}
             validationSchema={Yup.object({
               firstName: Yup.string().required("This is a required field."),
@@ -29,13 +31,14 @@ export const App = () => {
                 "Passwords must match"
               ),
               radioValue: Yup.string().required("This is a required field."),
+              checkboxValues: Yup.array().required("Select at least one item."),
             })}
             onSubmit={(values, { setSubmitting }) => {
               setFormPayload({ ...values });
               setSubmitting(false);
             }}
           >
-            {({ values }) => (
+            {({ values, touched, errors }) => (
               <Form>
                 <div className="column ">
                   <Input
@@ -82,6 +85,30 @@ export const App = () => {
                         value="no"
                         checked={values.radioValue === "no"}
                       />
+                    </div>
+                    {touched.radioValue && errors.radioValue ? (
+                      <p className="help is-danger">{errors.radioValue}</p>
+                    ) : null}
+                  </div>
+                  <div className="field">
+                    <div className="control">
+                      <CheckBox name="checkboxValues" value="Head">
+                        Head
+                      </CheckBox>
+                      <CheckBox name="checkboxValues" value="Shoulders">
+                        Shoulders
+                      </CheckBox>
+                      <CheckBox name="checkboxValues" value="Knees">
+                        Knees
+                      </CheckBox>
+                      <CheckBox name="checkboxValues" value="Toes">
+                        Toes
+                      </CheckBox>
+                      {touched.checkboxValues && errors.checkboxValues ? (
+                        <p className="help is-danger">
+                          {errors.checkboxValues}
+                        </p>
+                      ) : null}
                     </div>
                   </div>
                   <div className="field is-grouped">
