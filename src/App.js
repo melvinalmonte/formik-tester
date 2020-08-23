@@ -13,7 +13,7 @@ export const App = () => {
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   return (
-    <div className="app">
+    <>
       <Particles
         id="tsparticles"
         canvasClassName="particle-canvas"
@@ -161,6 +161,6 @@ export const App = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
