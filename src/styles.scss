@@ -22,11 +22,4 @@ span.checkbox-value {
 canvas.particle-canvas {
   position: absolute;
 }
-
-@media only screen and (max-width: 600px) {
-  canvas.particle-canvas {
-    position: absolute;
-    height: max-content !important;
-  }
-}
 @import "~bulma/bulma";
