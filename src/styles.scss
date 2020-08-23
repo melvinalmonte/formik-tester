@@ -1,12 +1,29 @@
+div.app {
+  min-height: 100vh;
+}
+
+nav.navbar {
+  background-color: rgba(255, 255, 255, 0);
+}
+h1.title {
+  color: #ffffff;
+}
+
 div.signup-box {
   border: 1px #000000 solid;
+  background: #ffffff;
   border-radius: 1rem;
 }
 div.signup-wrapper {
   padding: 2rem;
 }
 
-span.radio-value, span.checkbox-value {
+span.radio-value,
+span.checkbox-value {
   padding: 0.3rem;
+}
+
+.particle-canvas {
+  position: absolute !important;
 }
 @import "~bulma/bulma";

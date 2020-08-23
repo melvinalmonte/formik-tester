@@ -5,13 +5,20 @@ import Input from "./components/form/Input";
 import Radio from "./components/form/Radio";
 import CheckBox from "./components/form/CheckBox";
 import Header from "./components/header/Header";
+import Particles from "react-tsparticles";
+import { particleConfig } from "./components/utils";
 
 export const App = () => {
   const [formPayload, setFormPayload] = React.useState({});
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   return (
-    <>
+    <div className="app">
+      <Particles
+        id="tsparticles"
+        canvasClassName="particle-canvas"
+        options={particleConfig}
+      />
       <Header />
       <div className="container signup-wrapper">
         <div className="columns is-centered" style={{ padding: "1rem" }}>
@@ -148,13 +155,12 @@ export const App = () => {
                   <pre>
                     Form Content: {JSON.stringify(formPayload, null, 2)}
                   </pre>
-                  <pre>Form Errors: {JSON.stringify(errors, null, 2)}</pre>
                 </Form>
               )}
             </Formik>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
